@@ -1,0 +1,245 @@
+rules:
+  - name: "Sort archive files"
+    locations: ~/Downloads
+    filters:
+      - extension:
+          - zip
+          - rar
+          - 7z
+          - tar
+          - gz
+          - tgz
+          - bz2
+          - xz
+          - zst
+          - iso
+      - lastmodified:
+          minutes: 90
+    actions:
+      - move: ~/Downloads/Archives/
+
+  - name: "Sort audio files"
+    locations: ~/Downloads
+    filters:
+      - extension:
+          - mp3
+          - flac
+          - wav
+          - m4a
+          - aac
+          - ogg
+          - wma
+          - opus
+          - aiff
+          - alac
+      - lastmodified:
+          minutes: 90
+    actions:
+      - move: ~/Downloads/Audio/
+
+  - name: "Sort documents"
+    locations: ~/Downloads
+    filters:
+      - extension:
+          - pdf
+          - docx
+          - doc
+          - odt
+          - rtf
+          - xlsx
+          - xls
+          - ods
+          - pptx
+          - ppt
+          - odp
+          - csv
+      - lastmodified:
+          minutes: 90
+    actions:
+      - move: ~/Downloads/Documents/
+
+  - name: "Sort checksum files by extension"
+    locations: ~/Downloads
+    filters:
+      - extension:
+          - sha1
+          - sha224
+          - sha256
+          - sha384
+          - sha512
+          - sha1sum
+          - sha256sum
+          - sha512sum
+          - md5
+          - md5sum
+          - b2sum
+          - sum
+          - sig
+          - asc
+          - gpg
+      - lastmodified:
+          minutes: 90
+    actions:
+      - move: ~/Downloads/Checksums/
+
+  - name: "Sort checksum files by name"
+    locations: ~/Downloads
+    filters:
+      - name:
+          contains:
+            - sha1sum
+            - sha256sum
+            - sha512sum
+            - md5sum
+            - checksum
+      - lastmodified:
+          minutes: 90
+    actions:
+      - move: ~/Downloads/Checksums/
+
+  - name: "Sort text and markdown files"
+    locations: ~/Downloads
+    filters:
+      - extension:
+          - txt
+          - md
+          - rst
+          - log
+          - json
+          - yaml
+          - yml
+      - lastmodified:
+          minutes: 90
+    actions:
+      - move: ~/Downloads/Notes/
+
+  - name: "Sort images"
+    locations: ~/Downloads
+    filters:
+      - extension:
+          - jpg
+          - jpeg
+          - png
+          - gif
+          - webp
+          - bmp
+          - svg
+          - tiff
+          - heic
+          - raw
+          - ico
+      - lastmodified:
+          minutes: 90
+    actions:
+      - move: ~/Downloads/Images/
+
+  - name: "Sort videos"
+    locations: ~/Downloads
+    filters:
+      - extension:
+          - mp4
+          - mov
+          - webm
+          - avi
+          - mpg
+          - mpeg
+          - flv
+          - mkv
+          - wmv
+          - m4v
+          - 3gp
+      - lastmodified:
+          minutes: 90
+    actions:
+      - move: ~/Downloads/Videos/
+
+  - name: "Catch-all for everything else"
+    locations: ~/Downloads
+    filters:
+      - extension
+      - not extension:
+          - zip
+          - rar
+          - 7z
+          - tar
+          - gz
+          - tgz
+          - bz2
+          - xz
+          - zst
+          - iso
+          - mp3
+          - flac
+          - wav
+          - m4a
+          - aac
+          - ogg
+          - wma
+          - opus
+          - aiff
+          - alac
+          - pdf
+          - docx
+          - doc
+          - odt
+          - rtf
+          - xlsx
+          - xls
+          - ods
+          - pptx
+          - ppt
+          - odp
+          - csv
+          - sha1
+          - sha224
+          - sha256
+          - sha384
+          - sha512
+          - sha1sum
+          - sha256sum
+          - sha512sum
+          - md5
+          - md5sum
+          - b2sum
+          - sum
+          - sig
+          - asc
+          - gpg
+          - txt
+          - md
+          - rst
+          - log
+          - json
+          - yaml
+          - yml
+          - jpg
+          - jpeg
+          - png
+          - gif
+          - webp
+          - bmp
+          - svg
+          - tiff
+          - heic
+          - raw
+          - ico
+          - mp4
+          - mov
+          - webm
+          - avi
+          - mpg
+          - mpeg
+          - flv
+          - mkv
+          - wmv
+          - m4v
+          - 3gp
+          - crdownload
+          - part
+          - tmp
+          - opdownload
+          - aria2
+      - lastmodified:
+          minutes: 90
+    actions:
+      - move: ~/Downloads/Others/

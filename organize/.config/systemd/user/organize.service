@@ -1,0 +1,6 @@
+[Unit]
+Description=Run organize-tool
+
+[Service]
+Type=oneshot
+ExecStart=/home/jzyb/.local/bin/organize run
