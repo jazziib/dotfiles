@@ -1,0 +1,132 @@
+configuration {
+    show-icons: false;
+}
+
+* {
+    bg0: #1e1e20;
+    bg1: #161616;
+    grey0: #3a3a3a;
+    fg0: #d4d4d4;
+
+    blue: #7daea3;
+    red: #ea6962;
+    orange: #e78a4e;
+    green: #a9b665;
+    bgStatusline3: #262626;
+
+    background-color: @bg0;
+    font: "BlexMono Nerd Font 12";
+}
+
+window {
+    height: 520;
+    width: 420;
+
+    border: 1;
+    border-radius: 0;
+    border-color: @bgStatusline3;
+}
+
+mainbox {
+    spacing: 0;
+    children: [inputbar, message, listview];
+}
+
+inputbar {
+    color: @fg0;
+    padding: 14;
+    background-color: @bg0;
+    border-radius: 0;
+    children: [ entry ];
+}
+
+/* mode/gear icon removed — prompt + case-indicator disabled */
+prompt {
+    enabled: false;
+}
+
+case-indicator {
+    enabled: false;
+}
+
+entry {
+    text-color: @fg0;
+    placeholder:        " Search...";
+    placeholder-color: @grey0;
+}
+
+message {
+    padding: 10;
+    background-color: @bg1;
+    border-radius: 0;
+}
+
+listview {
+    padding: 8;
+    spacing: 10;
+    border-radius: 0;
+    border: 0;
+    background-color: @bg0;
+    dynamic: false;
+}
+
+textbox {
+    text-color: @fg0;
+    background-color: inherit;
+}
+
+error-message {
+    border: 20 20 20 20;
+    border-radius: 0;
+}
+
+/* --- app rows: no border box, just spacing + subtle highlight --- */
+
+element {
+    padding: 6;
+    vertical-align: 0.5;
+    border-radius: 0;
+    border: 0;
+    background-color: @bg0;
+}
+
+element.selected.normal {
+    background-color: @bg1;
+    text-color: @fg0;
+}
+
+element.alternate.normal {
+    background-color: inherit;
+}
+
+element.normal.active, element.alternate.active {
+    background-color: inherit;
+    text-color: @orange;
+}
+
+element.selected.active {
+    background-color: @bg1;
+    text-color: @green;
+}
+
+element.normal.urgent, element.alternate.urgent {
+    background-color: inherit;
+    text-color: @red;
+}
+
+element.selected.urgent {
+    background-color: @bg1;
+    text-color: @blue;
+}
+
+element-text {
+    margin: 0 10 0 0;
+    vertical-align: 0.5;
+    background-color: inherit;
+    text-color: @fg0;
+}
+
+element-text .active, element-text .urgent {
+    text-color: inherit;
+}
+
