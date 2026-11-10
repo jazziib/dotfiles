@@ -1,0 +1,10 @@
+[Unit]
+Description=RyzenAdj Temperature Limit
+After=multi-user.target suspend.target hibernate.target hybrid-sleep.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/ryzenadj --tctl-temp=85
+
+[Install]
+WantedBy=multi-user.target
