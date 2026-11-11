@@ -5,14 +5,15 @@ function fastfetch-centered
 
     set -l max_width (printf "%s\n" $output | perl -CS -ne '
         chomp;
-        my $w = 0;
+        my ($w, $line_max) = (0, 0);
         while (length($_)) {
             if    (s/^\x1b\[(\d+)C//) { $w += $1; }
             elsif (s/^\x1b\[(\d+)D//) { $w -= $1; }
             elsif (s/^\x1b\[[0-9;?]*[A-Za-z]//) { }
             else  { s/^(.)//s; $w++; }
+            $line_max = $w if $w > $line_max;
         }
-        $max = $w if $w > ($max // 0);
+        $max = $line_max if $line_max > ($max // 0);
         END { print($max // 0); }
     ')
 
@@ -22,4 +23,3 @@ function fastfetch-centered
         printf "%*s%s\n" $pad "" "$line"
     end
 end
-

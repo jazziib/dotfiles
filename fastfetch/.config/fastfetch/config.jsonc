@@ -1,4 +1,3 @@
-// Based on #1576
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {"type": "none"},
@@ -8,8 +7,6 @@
             "keys": "blue"
         },
         "separator": "",
-        // Constants are reusable strings referenced by {$1}, {$2}, etc.
-        // These contain ANSI escape codes for cursor positioning
         "constants": [
             "──────────────────────────────────────────────", // {$1} - horizontal line for inner borders
             "\u001b[47D",                                     // {$2} - move cursor left 47 columns
@@ -54,30 +51,26 @@
             "key": "╔═════════════════{$5}╗\u001b[41D",
             "format": ""
         },
-        //{
-            //"type": "os",
-            // Key format breakdown for OS module:
-            // "║  {icon}  \u001b[s{sysname}\u001b[u\u001b[10C│{$3}║{$2}"
-            //
-            // ║                    - Left border of key block
-            //   {icon}             - OS icon (defined internally by fastfetch)
-            //   \u001b[s           - ANSI escape: save cursor position (ESC[s)
-            // {sysname}            - Format variable: system name (e.g., "Linux", "Darwin")
-            // \u001b[u             - ANSI escape: restore cursor to saved position (ESC[u)
-            //                        Necessary because the length of `{sysname}` differs between different platforms
-            // \u001b[10C           - ANSI escape: move cursor right 10 columns (ESC[10C)
-            // │                    - Right border of key block (always 10 columns from left border)
-            // {$3}                 - Reference to constants[2]: move cursor right 47 columns
-            // ║                    - Right border of value block
-            // {$2}                 - Reference to constants[1]: move cursor left 47 columns
-            //
-            // This creates a fixed-width layout where the key block is exactly 10 columns wide,
-            // regardless of the actual content length. The cursor manipulation ensures proper
-            // alignment for the table-like structure.
-            //"key": "║  {icon}  \u001b[s{sysname}\u001b[u\u001b[10C║{$3}║{$2}",
-            //"format": "\u001b[1m{3}\u001b[22m"
-        //},
-        // Hardware section with cyan color theme
+                // OS section with green color theme
+        {
+            "type": "custom",
+            "key": "║{#green}┌──────────────┬{$1}┐{#keys}║\u001b[35D",
+            "format": "{#bright_green} OS "
+        },
+        {
+            "type": "os",
+            "keyIcon": "",
+            "key": "║{#green}│ {icon}  OS        │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "kernel",
+            "key": "║{#green}│ {icon}  Kernel    │{$4}│{#keys}║{$2}"
+        },
+        {
+            "type": "custom",
+            "key": "║{#green}└──────────────┴{$1}┘{#keys}║",
+            "format": ""
+        },
         {
             "type": "custom",
             "key": "║{#cyan}┌──────────────┬{$1}┐{#keys}║\u001b[37D",
@@ -308,4 +301,30 @@ regardless of the actual content length in each field.
 
 For more ANSI escape code reference, see:
 https://gist.github.com/fnky/458719343aabd01cfb17a3a4f7296797#cursor-controls
+*/
+
+/*
+[os.symbols]
+Windows = " "
+Ubuntu = "󰕈 "
+SUSE = " "
+Raspbian = "󰐿 "
+Mint = "󰣭 "
+Macos = "󰀵 "
+Manjaro = " "
+Linux = "󰌽 "
+Gentoo = "󰣨 "
+Fedora = "󰣛 "
+Alpine = " "
+Amazon = " "
+Android = " "
+AOSC = " "
+Arch = "󰣇 "
+Artix = "󰣇 "
+CachyOS = " "
+CentOS = " "
+Debian = "󰣚 "
+Redhat = "󱄛 "
+RedHatEnterprise = "󱄛 "
+Void = " "
 */
