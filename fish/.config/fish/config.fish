@@ -1,10 +1,20 @@
-# =================================================================
+# ============================================================
 # Base CachyOS config
-# =================================================================
-  source /usr/share/cachyos-fish-config/cachyos-config.fish
+# ============================================================
+source /usr/share/cachyos-fish-config/cachyos-config.fish
 
-# overwrite greeting
-# potentially disabling fastfetch
+# ============================================================
+# Personal overrides / additions
+# ============================================================
 function fish_greeting
-       fastfetch-centered.sh
+    fastfetch-centered
 end
+
+# Tools
+zoxide init fish | source
+
+# Aliases — paru (AUR + official)
+alias aurupdate="paru -Syu"
+alias aurinstall="paru -S"
+alias aurremove="paru -Rns"
+alias aursearch="paru -Ss"
