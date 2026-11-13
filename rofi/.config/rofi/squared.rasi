@@ -40,7 +40,6 @@ inputbar {
     children: [ entry ];
 }
 
-/* mode/gear icon removed — prompt + case-indicator disabled */
 prompt {
     enabled: false;
 }
@@ -80,7 +79,6 @@ error-message {
     border-radius: 0;
 }
 
-/* --- app rows: no border box, just spacing + subtle highlight --- */
 
 element {
     padding: 6;

@@ -1,3 +1,6 @@
+// ==============================================================================
+// Fastfetch - jzyb (CachyOS)
+// ==============================================================================
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {"type": "none"},
@@ -8,11 +11,11 @@
         },
         "separator": "",
         "constants": [
-            "──────────────────────────────────────────────", // {$1} - horizontal line for inner borders
-            "\u001b[47D",                                     // {$2} - move cursor left 47 columns
-            "\u001b[47C",                                     // {$3} - move cursor right 47 columns
-            "\u001b[46C",                                     // {$4} - move cursor right 46 columns
-            "══════════════════════════════════════════════"  // {$5} - horizontal line for outer borders
+            "──────────────────────────────────────────────",
+            "\u001b[47D",
+            "\u001b[47C",
+            "\u001b[46C",
+            "══════════════════════════════════════════════"
         ],
         "brightColor": true,
         "percent": {
@@ -39,6 +42,11 @@
             }
         }
     },
+
+// ==============================================================================
+// LOGO
+// ==============================================================================
+
     "modules": [
         { "type": "custom", "key": "\u001b[1;31m    ██████╗ █████╗  ██████╗██╗  ██╗██╗   ██╗ ██████╗ ███████╗\u001b[0m", "format": "" },
         { "type": "custom", "key": "\u001b[1;33m   ██╔════╝██╔══██╗██╔════╝██║  ██║╚██╗ ██╔╝██╔═══██╗██╔════╝\u001b[0m", "format": "" },
@@ -51,7 +59,11 @@
             "key": "╔═════════════════{$5}╗\u001b[41D",
             "format": ""
         },
-                // OS section with green color theme
+
+// ==============================================================================
+// OS
+// ==============================================================================
+
         {
             "type": "custom",
             "key": "║{#green}┌──────────────┬{$1}┐{#keys}║\u001b[35D",
@@ -71,6 +83,11 @@
             "key": "║{#green}└──────────────┴{$1}┘{#keys}║",
             "format": ""
         },
+
+// ==============================================================================
+// HARDWARE
+// ==============================================================================
+
         {
             "type": "custom",
             "key": "║{#cyan}┌──────────────┬{$1}┐{#keys}║\u001b[37D",
@@ -132,7 +149,11 @@
         },
 
 
-        // Terminal section with yellow color theme
+// ==============================================================================
+// TERMINAL
+// ==============================================================================
+
+
         {
             "type": "custom",
             "key": "║{#yellow}┌──────────────┬{$1}┐{#keys}║\u001b[37D",
@@ -156,7 +177,10 @@
             "format": ""
         },
 
-        // Development section with red color theme
+// ==============================================================================
+// DEVELOPMENT
+// ==============================================================================
+
         {
             "type": "custom",
             "key": "║{#red}┌──────────────┬{$1}┐{#keys}║\u001b[39D",
@@ -164,15 +188,15 @@
         },
         {
             "type": "command",
-            "keyIcon": "",                                   // Custom icon override
+            "keyIcon": "",
             "key": "║{#red}│ {icon}  Rust      │{$4}│{#keys}║{$2}",
             "text": "rustc --version",
-            "format": "rustc {~6,13}"                         // Print 6th to 13th characters (version number)
+            "format": "rustc {~6,13}"
         },
         {
             "type": "command",
             "condition": {
-                "!system": "Windows"                          // Posix version
+                "!system": "Windows"
             },
             "keyIcon": "",
             "key": "║{#red}│ {icon}  Clang     │{$4}│{#keys}║{$2}",
@@ -182,34 +206,34 @@
         {
             "type": "command",
             "condition": {
-                "system": "Windows"                           // Windows version
+                "system": "Windows"
             },
             "keyIcon": "",
             "key": "║{#red}│ {icon}  Clang     │{$4}│{#keys}║{$2}",
-            "text": "clang --version | findstr version",      // Finds the line with "version"
-            "format": "clang {~14,20}"                        // Prints 14~20 characters (version number)
+            "text": "clang --version | findstr version",
+            "format": "clang {~14,20}"
         },
         {
             "type": "command",
             "keyIcon": "",
             "key": "║{#red}│ {icon}  NodeJS    │{$4}│{#keys}║{$2}",
             "text": "node --version",
-            "format": "node {~1}"                             // {~1} removes first character (v)
+            "format": "node {~1}"
         },
 		{
 			"type": "command",
 			"keyIcon": "",
 			"key": "║{#red}│ {icon}  Python    │{$4}│{#keys}║{$2}",
 			"text": "python --version",
-			"format": "python {~7}"                           // {~7} removes first 7 characters ("Python" with extra space)
+			"format": "python {~7}"
 		},
-        //{
+        /*{
           //  "type": "command",
             //"keyIcon": "",
             //"key": "║{#red}│ {icon}  Go        │{$4}│{#keys}║{$2}",
             //"text": "go version | cut -d' ' -f3",
-            //"format": "go {~2}"                               // {~2} removes first 2 characters //(go)
-        //},
+            //"format": "go {~2}"
+          },*/
         {
             "type": "command",
             "keyIcon": "",
@@ -234,7 +258,10 @@
             "format": ""
         },
 
-        // Uptime section with magenta color theme
+// ==============================================================================
+// UPTIME
+// ==============================================================================
+
         {
             "type": "custom",
             "key": "║{#magenta}┌──────────────┬{$1}┐{#keys}║\u001b[36D",
@@ -245,23 +272,23 @@
             "key": "║{#magenta}│ {icon}  Uptime    │{$4}│{#keys}║{$2}"
         },
         {
-            "condition": {                                    // Conditional module: only show on non-macOS
+            "condition": {
                 "!system": "macOS"
             },
             "type": "disk",
             "keyIcon": "",
             "key": "║{#magenta}│ {icon}  OS Age    │{$4}│{#keys}║{$2}",
-            "folders": "/",                                   // Check root filesystem
-            "format": "{create-time:10} [{days} days]"        // Show creation time and age in days
+            "folders": "/",
+            "format": "{create-time:10} [{days} days]"
         },
         {
-            "condition": {                                    // Conditional module: only show on macOS
+            "condition": {
                 "system": "macOS"
             },
             "type": "disk",
             "keyIcon": "",
             "key": "║{#magenta}│ {icon}  OS Age    │{$4}│{#keys}║{$2}",
-            "folders": "/System/Volumes/VM",                 // Work around for APFS on macOS
+            "folders": "/System/Volumes/VM",
             "format": "{create-time:10} [{days} days]"
         },
         {
@@ -271,14 +298,18 @@
         },
         {
             "type": "custom",
-            "key": "╚═════════════════{$5}╝",                // Bottom border of the entire layout
+            "key": "╚═════════════════{$5}╝",
             "format": ""
         },
 
-        // End with color palette and line break
         "break",
     ]
 }
+
+// ==============================================================================
+// INSTRUCTIONS and Materials
+// ==============================================================================
+
 
 /*
 Key Format Structure Explanation:
