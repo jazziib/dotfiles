@@ -1,3 +1,6 @@
+# >>> lig pre >>>
+eval ('/home/jzyb/.local/bin/lig' init fish pre | string collect)
+# <<< lig pre <<<
 # ============================================================
 # Base CachyOS config
 # ============================================================
@@ -18,3 +21,6 @@ alias aurupdate="paru -Syu"
 alias aurinstall="paru -S"
 alias aurremove="paru -Rns"
 alias aursearch="paru -Ss"
+# >>> lig post >>>
+eval ('/home/jzyb/.local/bin/lig' init fish post | string collect)
+# <<< lig post <<<
